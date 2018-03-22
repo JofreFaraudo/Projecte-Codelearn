@@ -1,5 +1,5 @@
-# Projecte Codelearn 
+# Projecte Codelearn 2
 
-HOLA
+QUE TAL?
 
 
