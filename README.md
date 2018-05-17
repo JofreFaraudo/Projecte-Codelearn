@@ -15,7 +15,7 @@ Coses que ha de tenir la API
 * Llistar els TODOs
 
 ### Crear TODO
-`POST /todo/new`
+`POST /todo`
 
 Payload
 `
@@ -49,7 +49,7 @@ Return
 }
 `
 ### Editar TODO 
-`UPDATE /todo/`
+`put /todo/`
 
 Payload
 `
@@ -68,7 +68,7 @@ Return
 }
 `
 
-### llistar TODO 
+### Llistar TODO 
 `GET /todo`
 
 Return
