@@ -68,7 +68,7 @@ Return
 }
 `
 
-### Editar TODO 
+### llistar TODO 
 `GET /todo`
 
 Return
