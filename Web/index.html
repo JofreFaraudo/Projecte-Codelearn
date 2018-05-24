@@ -1,0 +1,37 @@
+<html>
+<head>
+	<title>Projecte Codelearn</title>
+	<script src='http://code.jquery.com/jquery-3.3.1.min.js'></script>
+	
+	<link rel='stylesheet' href='style.css'>
+</head>
+<body>
+	<h1>Llistat de coses per a fer</h1>
+	<h3>Coses pendents per a fer</h3>
+	<table cellspacing="10">
+		<thead>
+			<tr>
+				<th>Nom</th>
+				<th>Eines</th>
+			</tr>
+		</thead>
+		<tbody id='todos-no-fets'>
+		</tbody>
+	</table>
+	<h3>Coses fetes</h3>
+	<table cellspacing="10">
+		<thead>
+			<tr>
+				<th>Nom</th>
+				<th>Eines</th>
+			</tr>
+		</thead>
+		<tbody id='todos-fets'>
+		</tbody>
+	</table>
+	<h3>Afegir coses per a fer:</h3>
+	<input type="text" id="name" placeholder="Cosa per a fer...">
+	<button id="submit">Afegir</button>
+	<script src='main.js'></script>
+</body>
+<html>

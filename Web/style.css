@@ -1,0 +1,20 @@
+button{
+	cursor:pointer;
+	margin: 2px;
+}
+
+table {
+	border:1px solid black;
+}
+input[type="text"]:hover{
+	border-width: 2px;
+}
+input[type="text"]{
+	border-width: 1px;
+}
+td[contenteditable='true']:focus{
+	outline: 1px solid #09a4ff;
+}
+td[contenteditable='true']{
+	outline: 1px solid #a0a4ff;
+}
