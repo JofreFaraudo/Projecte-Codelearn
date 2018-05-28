@@ -1,17 +1,20 @@
-$.ajax({method:'GET',url:"http://dziban.net:5000/todo"}).done(function(data){
-	console.log(data);
-	let todos = data.todos;
-	if(todos == undefined) return;
-	for(let i=0;i < todos.length; ++i){
-		var actual = todos[i];
-		$((actual['state']==0?'#todos-no-fets':'#todos-fets')).append("<tr><td contenteditable='false' id='"+actual['id']+"'>"+actual['name']+
-			"</td><td><button class='delete' todo-id='"+actual['id']+"'>Esborrar</button>" +
-			"<button class='edit' todo-id='"+actual['id']+"'>Editar</button>" +
-			"<button class='"+(actual['state']==0?'marcarcomafet':'desmarcarcomafet')+"' todo-id='"+actual['id']+"'>"+(actual['state']==0?'Marcar com a fet':'Desmarcar com a fet')+"</button></tr>");
-	}
-	updateButtons();
-});
-
+function refreshTodos (){
+	$.ajax({method:'GET',url:"http://dziban.net:5000/todo"}).done(function(data){
+		console.log(data);
+		let todos = data.todos;
+		if(todos == undefined) return;
+		$("#todos-fets,#todos-no-fets").html("");
+		for(let i=0;i < todos.length; ++i){
+			var actual = todos[i];
+			$((actual['state']==0?'#todos-no-fets':'#todos-fets')).append("<tr><td contenteditable='false' id='"+actual['id']+"'>"+actual['name']+
+				"</td><td><button class='delete btn btn-warning' todo-id='"+actual['id']+"'>Esborrar</button>" +
+				"<button class='btn btn-success edit' todo-id='"+actual['id']+"'>Editar</button>" +
+				"<button class='btn btn-"+(actual['state']==0?'info marcarcomafet':'primary desmarcarcomafet')+"' todo-id='"+actual['id']+"'>"+(actual['state']==0?'Marcar com a fet':'Desmarcar com a fet')+"</button></tr>");
+		}
+		updateButtons();
+	});
+}
+refreshTodos();
 function updateButtons() {
 	$(".marcarcomafet").unbind("click");
 	$(".marcarcomafet").each(function(i, o) {
@@ -22,7 +25,7 @@ function updateButtons() {
 				contentType: 'application/json',
 				data: JSON.stringify({"id":id_todo,"state":1})})
 			.done(function(){
-				window.location.reload();
+				refreshTodos();
 			})
 		})
 	});
@@ -36,7 +39,7 @@ function updateButtons() {
 				contentType: 'application/json',
 				data: JSON.stringify({"id":id_todo,"state":0})})
 			.done(function(){
-				window.location.reload();
+				refreshTodos();
 			})
 		})
 	});
@@ -51,7 +54,7 @@ function updateButtons() {
 				contentType: 'application/json',
 				data: JSON.stringify({"id":id_todo})})
 			.done(function(){
-				window.location.reload();
+				refreshTodos();
 			})
 		})
 	});
@@ -81,7 +84,7 @@ function updateButtons() {
 				data: JSON.stringify({"name":$("#"+id_todo).html(),"id":id_todo})
 			})
 			.done(function(){
-				window.location.reload();
+				refreshTodos();
 			})
 		})
 	});
@@ -90,14 +93,22 @@ function updateButtons() {
 	$("#submit").click(function(){
 		let name = $("#name").val();
 		console.log(name);
+		if(name!=""){
 		$.ajax({method:'POST',
 				url:'http://dziban.net:5000/todo',
 				contentType: 'application/json',
 				data: JSON.stringify({"name":name})
 			})
 			.done(function(){
-				window.location.reload();
+				$('#name').val('');
+				refreshTodos();
 			})
+		}
+	})
+
+	$("#refresh").unbind("click");
+	$("#refresh").click(function(){
+		refreshTodos();
 	})
 }
 
