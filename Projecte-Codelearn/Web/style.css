@@ -1,0 +1,30 @@
+button{
+	cursor:pointer;
+	margin: 2px;
+}
+table {
+	border:1px solid black;
+}
+td[contenteditable='true']:focus{
+	outline: 1px solid #09a4ff;
+}
+td[contenteditable='true']{
+	outline: 1px solid #a0a4ff;
+}
+.form-control{
+	width: auto;
+	display: inline-block;
+	cursor: pointer;
+}
+.form-control:focus{
+	cursor: text;
+}
+.form-control:hover:not(:focus){
+	border-color: #000;
+}
+body{
+	padding: 1rem;
+}
+thead tr {
+	text-align: center;
+}
