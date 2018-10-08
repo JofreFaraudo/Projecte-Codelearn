@@ -2,7 +2,6 @@ button{
 	cursor:pointer;
 	margin: 2px;
 }
-
 table {
 	border:1px solid black;
 }
@@ -15,6 +14,10 @@ td[contenteditable='true']{
 .form-control{
 	width: auto;
 	display: inline-block;
+	cursor: pointer;
+}
+.form-control:focus{
+	cursor: text;
 }
 .form-control:hover:not(:focus){
 	border-color: #000;

@@ -1,11 +1,10 @@
-from flask import Flask
-from flask import request
-from flask import jsonify
-app = Flask(__name__)
+from flask import Flask, request, jsonify
 import sqlite3
-conn = sqlite3.connect("todos.db")
+from flask_cors import CORS
+app = Flask(__name__)
+conn = sqlite3.connect("todos.db", check_same_thread=False)
 c = conn.cursor()
-
+CORS(app)
 error_status = {'status': 'err'}
 ok_status = {'status': 'ok'}
 
@@ -106,4 +105,4 @@ def update():
     return jsonify(ok_status)
 
 if __name__ == '__main__':
-    app.run(host = '0.0.0.0', port=5000)
+    app.run(host = '0.0.0.0', port=5000, )

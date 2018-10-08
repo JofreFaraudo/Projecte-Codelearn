@@ -1,5 +1,5 @@
 function refreshTodos (){
-	$.ajax({method:'GET',url:"http://dziban.net:5000/todo"}).done(function(data){
+	$.ajax({method:'GET',url:"http://127.0.0.1:5000/todo"}).done(function(data){
 		console.log(data);
 		let todos = data.todos;
 		if(todos == undefined) return;
@@ -21,7 +21,7 @@ function updateButtons() {
 		$(o).click(function(e){
 			var id_todo = $(e.currentTarget).attr("todo-id");
 			$.ajax({method:'PUT',
-				url:'http://dziban.net:5000/todo',
+				url:'http://127.0.0.1:5000/todo',
 				contentType: 'application/json',
 				data: JSON.stringify({"id":id_todo,"state":1})})
 			.done(function(){
@@ -35,7 +35,7 @@ function updateButtons() {
 		$(o).click(function(e){
 			var id_todo = $(e.currentTarget).attr("todo-id");
 			$.ajax({method:'PUT',
-				url:'http://dziban.net:5000/todo',
+				url:'http://127.0.0.1:5000/todo',
 				contentType: 'application/json',
 				data: JSON.stringify({"id":id_todo,"state":0})})
 			.done(function(){
@@ -50,7 +50,7 @@ function updateButtons() {
 		$(o).click(function(e){
 			var id_todo = $(e.currentTarget).attr("todo-id");
 			$.ajax({method:'DELETE',
-				url:'http://dziban.net:5000/todo',
+				url:'http://127.0.0.1:5000/todo',
 				contentType: 'application/json',
 				data: JSON.stringify({"id":id_todo})})
 			.done(function(){
@@ -79,7 +79,7 @@ function updateButtons() {
 		$(o).click(function(e){
 			var id_todo = $(e.currentTarget).attr("todo-id");
 			$.ajax({method:'PUT',
-				url:'http://dziban.net:5000/todo',
+				url:'http://127.0.0.1:5000/todo',
 				contentType: 'application/json',
 				data: JSON.stringify({"name":$("#"+id_todo).html(),"id":id_todo})
 			})
@@ -95,7 +95,7 @@ function updateButtons() {
 		console.log(name);
 		if(name!=""){
 		$.ajax({method:'POST',
-				url:'http://dziban.net:5000/todo',
+				url:'http://127.0.0.1:5000/todo',
 				contentType: 'application/json',
 				data: JSON.stringify({"name":name})
 			})
